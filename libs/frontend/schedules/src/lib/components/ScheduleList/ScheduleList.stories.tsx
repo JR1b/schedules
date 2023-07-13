@@ -3,10 +3,23 @@ import { ScheduleList } from './ScheduleList';
 
 const Story: Meta<typeof ScheduleList> = {
   component: ScheduleList,
-  title: 'Schedules',
+  title: 'ScheduleList',
 };
 export default Story;
 
 export const Primary = {
-  args: {},
+  args: {
+    schedules: [
+      {
+        id: '1',
+        name: 'Schedule 1',
+        description: 'Schedule 1 description',
+      },
+      {
+        id: '2',
+        name: 'Schedule 2',
+        description: 'Schedule 2 description',
+      },
+    ],
+  },
 };

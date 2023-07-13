@@ -4,7 +4,7 @@ import { ScheduleList } from './ScheduleList';
 
 describe('FrontendSchedules', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ScheduleList />);
+    const { baseElement } = render(<ScheduleList schedules={[]} />);
     expect(baseElement).toBeTruthy();
   });
 });
