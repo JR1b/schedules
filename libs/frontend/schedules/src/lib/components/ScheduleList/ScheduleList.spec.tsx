@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { Schedules } from './Schedules';
+import { ScheduleList } from './ScheduleList';
 
 describe('FrontendSchedules', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Schedules />);
+    const { baseElement } = render(<ScheduleList />);
     expect(baseElement).toBeTruthy();
   });
 });

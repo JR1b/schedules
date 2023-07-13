@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react';
-import { Schedules } from './Schedules';
+import { ScheduleList } from './ScheduleList';
 
-const Story: Meta<typeof Schedules> = {
-  component: Schedules,
+const Story: Meta<typeof ScheduleList> = {
+  component: ScheduleList,
   title: 'Schedules',
 };
 export default Story;
