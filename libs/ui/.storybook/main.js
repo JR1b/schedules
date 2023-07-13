@@ -1,11 +1,11 @@
 const config = {
-  stories: ['../src/app/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials'],
+  stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-essentials', '@nx/react/plugins/storybook'],
   framework: {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: 'apps/frontend/vite.config.ts',
+        viteConfigPath: '',
       },
     },
   },
