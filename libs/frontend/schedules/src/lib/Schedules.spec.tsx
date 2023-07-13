@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Schedules } from './schedules';
+import { Schedules } from './Schedules';
 
 describe('FrontendSchedules', () => {
   it('should render successfully', () => {

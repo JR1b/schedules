@@ -1,1 +1,1 @@
-export * from './lib/schedules';
+export { Schedules } from './lib/Schedules';
