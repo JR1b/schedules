@@ -1,4 +1,6 @@
 import { Grid, View } from '@adobe/react-spectrum';
+import { ScheduleContextProvider } from '../contexts';
+import { LogsView, SchedulesView } from './views';
 
 export function SchedulesPage(): React.ReactElement {
   return (
@@ -9,12 +11,14 @@ export function SchedulesPage(): React.ReactElement {
       height="size-6000"
       gap="size-100"
     >
-      <View backgroundColor="gray-200" gridArea="schedules">
-        <h1>Schedules</h1>
-      </View>
-      <View backgroundColor="gray-200" gridArea="logs">
-        <h1>Logs</h1>
-      </View>
+      <ScheduleContextProvider>
+        <View backgroundColor="gray-200" gridArea="schedules">
+          <SchedulesView />
+        </View>
+        <View backgroundColor="gray-200" gridArea="logs">
+          <LogsView />
+        </View>
+      </ScheduleContextProvider>
     </Grid>
   );
 }
