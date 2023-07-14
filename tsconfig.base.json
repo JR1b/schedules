@@ -26,7 +26,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@schedules/frontend/schedules": ["libs/frontend/schedules/src/index.ts"]
+      "@schedules/frontend/schedules": ["libs/frontend/schedules/src/index.ts"],
+      "@schedules/storybook": ["libs/storybook/src/index.ts"],
+      "@schedules/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

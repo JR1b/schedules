@@ -1,4 +1,6 @@
-export const schema = {
+import { Schema } from 'json-schema-faker';
+
+export const schema: Schema = {
   type: 'object',
   properties: {
     schedules: {
@@ -79,39 +81,34 @@ export const schema = {
       type: 'array',
       minItems: 150,
       items: {
-        id: {
-          $ref: '#/definitions/positiveInt',
-        },
-        startTime: {
-          type: 'string',
-          format: 'isodate',
-        },
-        endTime: {
-          type: 'string',
-          format: 'isodate',
-        },
-        status: {
-          type: 'string',
-          pattern: 'Pending|Running|Terminated|Completed|Exception',
-        },
-        serverName: {
-          type: 'string',
-        },
-        scheduleId: {
-          type: 'integer',
+        properties: {
+          id: {
+            $ref: '#/definitions/positiveInt',
+          },
+          startTime: {
+            type: 'string',
+            format: 'isodate',
+          },
+          endTime: {
+            type: 'string',
+            format: 'isodate',
+          },
+          status: {
+            type: 'string',
+            pattern: 'Pending|Running|Terminated|Completed|Exception',
+          },
+          serverName: {
+            type: 'string',
+          },
+          scheduleId: {
+            type: 'integer',
+          },
         },
       },
-      required: [
-        'id',
-        'startTime',
-        'endTime',
-        'status',
-        'serverName',
-        'scheduleId',
-      ],
+      required: ['id', 'startTime', 'endTime', 'status', 'serverName', 'scheduleId'],
     },
   },
-  required: ['schedules', 'scheduleLogs'],
+  required: ['schedules', 'logs'],
   definitions: {
     positiveInt: {
       type: 'integer',

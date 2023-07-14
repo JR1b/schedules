@@ -1,13 +1,22 @@
-import jsf from 'json-schema-faker';
+import { format, resolve } from 'json-schema-faker';
 import { random } from 'lodash';
-import randomDate from 'random-datetime';
-import { schema } from './schema.js';
+import { schema } from './schema';
+import { Schedule, Log } from '../types';
+
+type MockData = {
+  schedules: Schedule[];
+  logs: Log[];
+};
+
+function randomDate(start: Date, end: Date) {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
 
 export const generateMockData = async () => {
-  jsf.format('name', () => `Random Schedule Name (${random(1, 1000)})`);
-  jsf.format('isodate', () => randomDate({ year: 2021 }).toISOString());
+  format('name', () => `Random Schedule Name (${random(1, 1000)})`);
+  format('isodate', () => randomDate(new Date(2021, 0, 1), new Date()).toISOString());
 
-  const generatedData = await jsf.resolve(schema);
+  const generatedData = (await resolve(schema)) as unknown as MockData;
   const scheduleIds = generatedData.schedules.map((schedule) => schedule.id);
 
   return {

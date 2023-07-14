@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
+import { defaultTheme, Provider } from '@adobe/react-spectrum';
 
-function App(): ReactElement {
+export function App(): ReactElement {
   return (
-    <div>
-      <h1>Welcome to app!</h1>
-      <Outlet />
-    </div>
+    <Provider theme={defaultTheme} colorScheme={'dark'}>
+      <div className="h-screen">
+        <Outlet />
+      </div>
+    </Provider>
   );
 }
-
-export default App;

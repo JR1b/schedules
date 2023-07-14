@@ -1,1 +1,1 @@
-export * from './lib/schedules';
+export * from './lib/Pages';
