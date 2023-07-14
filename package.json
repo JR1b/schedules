@@ -7,6 +7,7 @@
   "dependencies": {
     "@adobe/react-spectrum": "^3.28.0",
     "@swc/helpers": "~0.5.0",
+    "@types/json-schema-faker": "^0.5.1",
     "axios": "^1.0.0",
     "express": "~4.18.1",
     "json-schema-faker": "0.5.0-rcv.34",
@@ -14,8 +15,11 @@
     "lodash": "^4.17.21",
     "random-datetime": "1.0.1",
     "react": "18.2.0",
+    "react-aria": "^3.26.0",
+    "react-aria-components": "1.0.0-alpha.5",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.14.1",
+    "react-stately": "^3.24.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -33,6 +37,7 @@
     "@nx/web": "16.5.1",
     "@nx/workspace": "16.5.1",
     "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-styling": "^1.3.2",
     "@storybook/core-server": "^7.0.24",
     "@storybook/react": "^7.0.24",
     "@storybook/react-vite": "^7.0.24",
