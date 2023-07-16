@@ -12,6 +12,12 @@ type ScheduleListProps = {
 export function ScheduleList(props: ScheduleListProps): React.ReactElement {
   const { scheduleList, onRetire, onShowLogs } = props;
 
+  const hasNoScheduleList = scheduleList.length === 0;
+
+  if (hasNoScheduleList) {
+    return <div>No schedules found</div>;
+  }
+
   const updateSelectedSchedule = (selection: Selection) => {
     const hasSelectionCurrentKey =
       !(typeof selection === 'object') ||
