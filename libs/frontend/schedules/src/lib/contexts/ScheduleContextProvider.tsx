@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useAsyncList } from 'react-stately';
 
 import { Schedule } from '../types';
@@ -21,13 +21,19 @@ type ScheduleProviderProps = {
 export function ScheduleContextProvider({
   children,
 }: ScheduleProviderProps): React.ReactElement {
-  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
-
   const scheduleListResponse = useAsyncList<Schedule>({
     load: async ({ signal }) => ({ items: await getScheduleList(signal) }),
   });
+  const { items: scheduleList, isLoading, reload, update } = scheduleListResponse;
 
-  const { items: scheduleList, isLoading, reload } = scheduleListResponse;
+  const onRetire = async (schedule: Schedule, isRetired: boolean) => {
+    update(schedule.id, { ...schedule, isRetired });
+  };
+
+  const onShowLogs = (schedule: Schedule) => {
+    console.log('🚀 ~ file: ScheduleContextProvider.tsx:37 ~ schedule:', schedule);
+  };
+
   return (
     <ScheduleContext.Provider
       value={{
@@ -35,8 +41,8 @@ export function ScheduleContextProvider({
         total: scheduleList.length,
         isLoading,
         reload,
-        selectedSchedule,
-        setSelectedSchedule,
+        onRetire,
+        onShowLogs,
       }}
     >
       {children}

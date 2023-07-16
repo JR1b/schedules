@@ -5,12 +5,12 @@ import { ScheduleCard } from '../ScheduleCard';
 
 type ScheduleListProps = {
   scheduleList: Schedule[];
-  selectedSchedule: Schedule | null;
-  setSelectedSchedule: (schedule: Schedule | null) => void;
+  onShowLogs: (schedule: Schedule) => void;
+  onRetire: (schedule: Schedule, isRetired: boolean) => void;
 };
 
 export function ScheduleList(props: ScheduleListProps): React.ReactElement {
-  const { scheduleList, selectedSchedule, setSelectedSchedule } = props;
+  const { scheduleList, onRetire, onShowLogs } = props;
 
   const updateSelectedSchedule = (selection: Selection) => {
     const hasSelectionCurrentKey =
@@ -29,7 +29,7 @@ export function ScheduleList(props: ScheduleListProps): React.ReactElement {
     const hasFoundSchedule = schedule != null;
 
     if (hasFoundSchedule) {
-      setSelectedSchedule(schedule);
+      onShowLogs(schedule);
     }
   };
 
@@ -40,7 +40,9 @@ export function ScheduleList(props: ScheduleListProps): React.ReactElement {
       items={scheduleList}
       onSelectionChange={updateSelectedSchedule}
     >
-      {(schedule) => <ScheduleCard key={schedule.id} schedule={schedule} />}
+      {(schedule) => (
+        <ScheduleCard key={schedule.id} onRetire={onRetire} schedule={schedule} />
+      )}
     </ListBox>
   );
 }

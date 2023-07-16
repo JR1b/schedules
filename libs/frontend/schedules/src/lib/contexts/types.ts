@@ -5,6 +5,6 @@ export type ScheduleContextState = {
   total: number;
   isLoading?: boolean;
   reload: () => void;
-  selectedSchedule: Schedule | null;
-  setSelectedSchedule: (schedule: Schedule | null) => void;
+  onRetire: (schedule: Schedule, isRetired: boolean) => void;
+  onShowLogs: (schedule: Schedule) => void;
 };
