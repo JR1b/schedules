@@ -1,4 +1,4 @@
-import { TitleBar } from '../TitleBar/TitleBar';
+import { TitleBar } from '../TitleBar';
 
 type Props = {
   title: string;

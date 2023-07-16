@@ -1,24 +1,21 @@
-import { Grid, View } from '@adobe/react-spectrum';
+import { Page } from '@schedules/ui';
+
 import { ScheduleContextProvider } from '../contexts';
 import { LogsView, SchedulesView } from './views';
 
 export function SchedulesPage(): React.ReactElement {
   return (
-    <Grid
-      areas={['schedules logs']}
-      columns={['1fr', '3fr']}
-      rows={['auto']}
-      height="size-6000"
-      gap="size-100"
-    >
-      <ScheduleContextProvider>
-        <View backgroundColor="gray-200" gridArea="schedules">
-          <SchedulesView />
-        </View>
-        <View backgroundColor="gray-200" gridArea="logs">
-          <LogsView />
-        </View>
-      </ScheduleContextProvider>
-    </Grid>
+    <ScheduleContextProvider>
+      <Page title="Schedules">
+        <div className="flex h-full flex-col gap-2 md:flex-row">
+          <div className="bg-slate-900 md:h-full md:w-96">
+            <SchedulesView />
+          </div>
+          <div className="h-full w-full bg-slate-900">
+            <LogsView />
+          </div>
+        </div>
+      </Page>
+    </ScheduleContextProvider>
   );
 }

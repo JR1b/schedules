@@ -1,23 +1,46 @@
-import { Item, ListBox, Section, Text } from '@adobe/react-spectrum';
+import { ListBox, Selection } from 'react-aria-components';
+
 import { Schedule } from '../../types';
+import { ScheduleCard } from '../ScheduleCard';
 
 type ScheduleListProps = {
-  schedules: Schedule[];
+  scheduleList: Schedule[];
+  selectedSchedule: Schedule | null;
+  setSelectedSchedule: (schedule: Schedule | null) => void;
 };
 
 export function ScheduleList(props: ScheduleListProps): React.ReactElement {
-  const { schedules } = props;
-  console.log(schedules);
+  const { scheduleList, selectedSchedule, setSelectedSchedule } = props;
+
+  const updateSelectedSchedule = (selection: Selection) => {
+    const hasSelectionCurrentKey =
+      !(typeof selection === 'object') ||
+      selection == null ||
+      !('currentKey' in selection);
+
+    if (hasSelectionCurrentKey) {
+      return;
+    }
+
+    const schedule = scheduleList.find(
+      (schedule) => schedule.id === selection.currentKey
+    );
+
+    const hasFoundSchedule = schedule != null;
+
+    if (hasFoundSchedule) {
+      setSelectedSchedule(schedule);
+    }
+  };
+
   return (
-    <ListBox width="size-2400" selectionMode="single" aria-label="Schedules">
-      <Section title="Schedules">
-        {schedules.map((schedule) => (
-          <Item key={schedule.id}>
-            <Text>{schedule.name}</Text>
-            <Text slot="description">{schedule.description}</Text>
-          </Item>
-        ))}
-      </Section>
+    <ListBox
+      label="schedule list"
+      selectionMode="single"
+      items={scheduleList}
+      onSelectionChange={updateSelectedSchedule}
+    >
+      {(schedule) => <ScheduleCard key={schedule.id} schedule={schedule} />}
     </ListBox>
   );
 }

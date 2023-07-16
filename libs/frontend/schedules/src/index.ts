@@ -1,1 +1,1 @@
-export * from './lib/Pages';
+export * from './routes';
