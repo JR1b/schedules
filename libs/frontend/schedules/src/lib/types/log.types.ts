@@ -1,8 +1,5 @@
-export type Log = {
-  id: number;
-  scheduleId: number;
-  startTime: string;
-  endTime: string;
-  status: string;
-  serverName: string;
-};
+import { z } from 'zod';
+
+import { logSchema } from '../schemas/Log.schema';
+
+export type Log = z.infer<typeof logSchema>;
