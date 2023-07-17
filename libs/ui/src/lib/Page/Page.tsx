@@ -8,12 +8,12 @@ type Props = {
 export function Page(props: Props): React.ReactElement {
   const { title = 'App', children } = props;
   return (
-    <div className="flex h-screen flex-col gap-2 bg-slate-700 text-gray-50">
-      <div className="bg-slate-900">
+    <div className="flex h-screen flex-col overflow-hidden bg-slate-700 text-gray-50">
+      <div className="h-[5vh] bg-slate-950">
         <TitleBar title={title} />
       </div>
 
-      <div className="h-full">{children}</div>
+      <div className="my-2 grow md:mx-2">{children}</div>
     </div>
   );
 }

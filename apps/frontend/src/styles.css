@@ -6,4 +6,29 @@
 
 html{
   background-color: black;
+  color-scheme: dark;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* slate-950 */
+  background: #020617;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* slate-900 */
+  background: #0f172a; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* slate-700 */
+  background: #334155;
 }

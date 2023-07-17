@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ListBox, Selection } from 'react-aria-components';
 
 import { Schedule } from '../../types';
@@ -11,6 +12,8 @@ type ScheduleListProps = {
 
 export function ScheduleList(props: ScheduleListProps): React.ReactElement {
   const { scheduleList, onRetire, onShowLogs } = props;
+
+  const [selection, setSelection] = useState<Selection>();
 
   const hasNoScheduleList = scheduleList.length === 0;
 
@@ -45,6 +48,7 @@ export function ScheduleList(props: ScheduleListProps): React.ReactElement {
       selectionMode="single"
       items={scheduleList}
       onSelectionChange={updateSelectedSchedule}
+      className="space-y-2"
     >
       {(schedule) => (
         <ScheduleCard key={schedule.id} onRetire={onRetire} schedule={schedule} />

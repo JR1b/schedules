@@ -18,7 +18,7 @@ export function RetireButton(props: Props): React.ReactElement {
     >
       {({ isSelected }) => (
         <div
-          className={classnames('w-14 rounded-md border py-0.5 px-1 transition-all', {
+          className={classnames('w-14 rounded-md border px-1 py-0.5 transition-all', {
             'bg-slate-700 hover:bg-slate-800': isSelected,
             'bg-blue-600 hover:bg-blue-700': !isSelected,
           })}

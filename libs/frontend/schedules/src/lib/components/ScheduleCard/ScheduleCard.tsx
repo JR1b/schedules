@@ -1,4 +1,3 @@
-import { AlertDialog } from '@adobe/react-spectrum';
 import { Button, Item } from 'react-aria-components';
 import { FiX } from 'react-icons/fi';
 import { ItemProps } from 'react-stately';
@@ -18,7 +17,7 @@ export function ScheduleCard(props: Props): React.ReactElement {
   const { schedule, onRetire, ...itemProps } = props;
 
   return (
-    <Item {...itemProps} id={schedule.id} textValue={schedule.name} className="m-2">
+    <Item {...itemProps} id={schedule.id} textValue={schedule.name}>
       {({ isSelected }) => (
         <div
           className={classnames(
@@ -41,7 +40,7 @@ export function ScheduleCard(props: Props): React.ReactElement {
               </p>
             </div>
           </div>
-          <div className="flex w-1/5 flex-col items-end justify-between font-medium">
+          <div className="flex w-1/5 flex-col items-end justify-between text-sm font-medium">
             <Button
               onPress={() => alert(`This would delete the schedule '${schedule.name}'`)}
               className="rounded-full border p-0.5 transition-all hover:scale-105 hover:bg-slate-800"
