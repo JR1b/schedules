@@ -23,7 +23,7 @@ export function RetireButton(props: Props): React.ReactElement {
             'bg-blue-600 hover:bg-blue-700': !isSelected,
           })}
         >
-          {isSelected ? 'Retired' : 'Retire'}
+          {isSelected ? 'Unretire' : 'Retire'}
         </div>
       )}
     </ToggleButton>
