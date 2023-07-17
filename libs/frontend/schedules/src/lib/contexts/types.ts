@@ -1,10 +1,10 @@
-import { Schedule } from '../types';
+import { Log, Schedule } from '../types';
 
 export type ScheduleContextState = {
   scheduleList: Schedule[];
-  total: number;
-  isLoading?: boolean;
-  reload: () => void;
+  isLoadingSchedules?: boolean;
+  selectedScheduleLogList: Log[];
+  isLoadingLogs: boolean;
   onRetire: (schedule: Schedule, isRetired: boolean) => void;
   onShowLogs: (schedule: Schedule) => void;
 };

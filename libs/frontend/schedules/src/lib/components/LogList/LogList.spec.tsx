@@ -1,12 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { ScheduleList } from './ScheduleList';
+import { LogList } from './LogList';
 
 describe('FrontendSchedules', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(
-      <ScheduleList scheduleList={[]} onRetire={() => null} onShowLogs={() => null} />
-    );
+    const { baseElement } = render(<LogList logList={[]} />);
     expect(baseElement).toBeTruthy();
   });
 });

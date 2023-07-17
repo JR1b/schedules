@@ -1,2 +1,2 @@
 export * from './ScheduleList';
-export * from './Logs';
+export * from './LogList';

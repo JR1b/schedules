@@ -4,16 +4,14 @@ import { ListBox, Selection } from 'react-aria-components';
 import { Schedule } from '../../types';
 import { ScheduleCard } from '../ScheduleCard';
 
-type ScheduleListProps = {
+type Props = {
   scheduleList: Schedule[];
   onShowLogs: (schedule: Schedule) => void;
   onRetire: (schedule: Schedule, isRetired: boolean) => void;
 };
 
-export function ScheduleList(props: ScheduleListProps): React.ReactElement {
+export function ScheduleList(props: Props): React.ReactElement {
   const { scheduleList, onRetire, onShowLogs } = props;
-
-  const [selection, setSelection] = useState<Selection>();
 
   const hasNoScheduleList = scheduleList.length === 0;
 
