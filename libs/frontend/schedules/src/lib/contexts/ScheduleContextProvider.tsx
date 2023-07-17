@@ -1,6 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 import { useAsyncList } from 'react-stately';
 
+import { z } from 'zod';
+
+import { logSchema } from '../schemas';
 import { Log, Schedule } from '../types';
 import { ScheduleContextState } from './types';
 
@@ -49,7 +52,7 @@ export function ScheduleContextProvider({
 
   const onShowLogs = (schedule: Schedule) => {
     const selectedScheduleLogList = logList.filter(
-      (log) => log.scheduleId === schedule.id
+      (log) => log.scheduleId === schedule.id && logSchema.safeParse(log).success
     );
     setSelectedScheduleLogList(selectedScheduleLogList);
   };
