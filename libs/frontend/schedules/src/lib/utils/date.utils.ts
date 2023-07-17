@@ -1,3 +1,4 @@
+// TODO: move this to a shared library
 const formatter = new Intl.DateTimeFormat('en-US', {
   timeZone: 'UTC',
   dateStyle: 'medium',
