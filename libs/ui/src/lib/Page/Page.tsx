@@ -35,7 +35,7 @@ export function Page(props: Props): React.ReactElement {
   return (
     <div className="flex h-screen flex-col bg-slate-700 text-gray-50">
       {pageTitleBar}
-      <div className="my-2 grow overflow-auto md:mx-2">{pageBody}</div>
+      {pageBody}
     </div>
   );
 }
