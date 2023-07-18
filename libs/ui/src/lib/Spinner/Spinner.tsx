@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 type Props = {
   label?: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 };
 
 /**
@@ -17,7 +17,7 @@ type Props = {
  * ```
  */
 export function Spinner(props: Props): React.ReactElement {
-  const { isLoading, label = '' } = props;
+  const { isLoading = false, label = '' } = props;
   return (
     <div className={classNames('flex items-center gap-2', { hidden: !isLoading })}>
       <span>{label}</span>
