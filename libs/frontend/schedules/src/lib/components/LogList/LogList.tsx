@@ -10,10 +10,14 @@ type Props = {
 export function LogList(props: Props): React.ReactElement {
   const { logList } = props;
 
-  const hasNoScheduleList = LogList.length === 0;
+  const hasLogs = logList.length > 0;
 
-  if (hasNoScheduleList) {
-    return <div>No logs found</div>;
+  if (!hasLogs) {
+    return (
+      <div>
+        <p>No logs found</p>
+      </div>
+    );
   }
 
   return (
@@ -21,7 +25,7 @@ export function LogList(props: Props): React.ReactElement {
       label="log list"
       selectionMode="single"
       items={logList}
-      className="space-y-2"
+      className="flex flex-col flex-wrap gap-2 md:flex-row"
     >
       {(log) => <LogCard key={log.id} log={log} />}
     </ListBox>

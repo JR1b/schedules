@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ListBox, Selection } from 'react-aria-components';
 
 import { Schedule } from '../../types';
@@ -6,17 +5,21 @@ import { ScheduleCard } from '../ScheduleCard';
 
 type Props = {
   scheduleList: Schedule[];
-  onShowLogs: (schedule: Schedule) => void;
+  onSelectSchedule: (schedule: Schedule) => void;
   onRetire: (schedule: Schedule, isRetired: boolean) => void;
 };
 
 export function ScheduleList(props: Props): React.ReactElement {
-  const { scheduleList, onRetire, onShowLogs } = props;
+  const { scheduleList, onRetire, onSelectSchedule } = props;
 
-  const hasNoScheduleList = scheduleList.length === 0;
+  const hasSchedules = scheduleList.length > 0;
 
-  if (hasNoScheduleList) {
-    return <div>No schedules found</div>;
+  if (!hasSchedules) {
+    return (
+      <div>
+        <p>No schedules found</p>
+      </div>
+    );
   }
 
   const updateSelectedSchedule = (selection: Selection) => {
@@ -36,7 +39,7 @@ export function ScheduleList(props: Props): React.ReactElement {
     const hasFoundSchedule = schedule != null;
 
     if (hasFoundSchedule) {
-      onShowLogs(schedule);
+      onSelectSchedule(schedule);
     }
   };
 
@@ -46,7 +49,7 @@ export function ScheduleList(props: Props): React.ReactElement {
       selectionMode="single"
       items={scheduleList}
       onSelectionChange={updateSelectedSchedule}
-      className="space-y-2"
+      className="space-y-2 py-2"
     >
       {(schedule) => (
         <ScheduleCard key={schedule.id} onRetire={onRetire} schedule={schedule} />
