@@ -30,6 +30,6 @@ const scheduleList: Schedule[] = [
 
 export const Primary = {
   args: {
-    schedules: scheduleList,
+    scheduleList: scheduleList,
   },
 };

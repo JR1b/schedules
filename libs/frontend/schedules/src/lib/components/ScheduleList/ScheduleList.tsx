@@ -9,6 +9,21 @@ type Props = {
   onRetire: (schedule: Schedule, isRetired: boolean) => void;
 };
 
+/**
+ * Schedule list component
+ * @param props.scheduleList The list of schedules to render
+ * @param props.onSelectSchedule The callback to handle when a schedule is selected
+ * @param props.onRetire The callback to handle when a schedule is retired
+ * @example
+ * ```tsx
+ * <ScheduleList
+ *  scheduleList={scheduleList}
+ *  onSelectSchedule={handleSelectSchedule}
+ *  onRetire={handleRetire}
+ * />
+ * ```
+ * @see https://react-spectrum.adobe.com/react-aria/ListBox.html
+ */
 export function ScheduleList(props: Props): React.ReactElement {
   const { scheduleList, onRetire, onSelectSchedule } = props;
 
