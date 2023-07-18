@@ -1,4 +1,5 @@
 import {
+  CheckboxGroupProps as CheckboxGroupPropsRAC,
   CheckboxProps as CheckboxPropsRAC,
   Checkbox as CheckboxRAC,
   CheckboxGroup as CheckboxGroupRAC,
@@ -7,7 +8,7 @@ import {
 
 import './CheckboxGroup.css';
 
-type CheckboxGroupProps = {
+type CheckboxGroupProps = Pick<CheckboxGroupPropsRAC, 'onChange' | 'defaultValue'> & {
   children?: React.ReactNode;
   label?: string;
   description?: string;
@@ -18,7 +19,6 @@ type CheckboxGroupProps = {
  * @param props.children The content of the checkbox group
  * @param props.label The label of the checkbox group
  * @param props.description The description of the checkbox group
- * @param props.errorMessage The error message of the checkbox group
  * @example
  * ```tsx
  * <CheckboxGroup
