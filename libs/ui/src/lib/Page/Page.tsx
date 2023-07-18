@@ -14,8 +14,11 @@ type Props = {
  * @param props.children - The child elements to render
  * @example
  * ```tsx
- * <Page title="My Page">
- *  <div>My Page</div>
+ * <Page>
+ *   <Page.TitleBar title="Page Title"/>
+ *   <Page.Body>
+ *     <p>Page Body</p>
+ *   </Page.Body>
  * </Page>
  * ```
  */

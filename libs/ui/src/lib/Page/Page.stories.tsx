@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Page } from './Page';
 
@@ -8,9 +8,16 @@ const Story: Meta<typeof Page> = {
 };
 export default Story;
 
-export const Primary = {
+export const Primary: StoryObj<typeof Page> = {
   args: {
-    title: 'App',
-    children: <div>Page content goes here</div>,
+    children: 'Primary',
   },
+  render: () => (
+    <Page>
+      <Page.TitleBar title="Page Title" />
+      <Page.Body>
+        <p>Page Body</p>
+      </Page.Body>
+    </Page>
+  ),
 };

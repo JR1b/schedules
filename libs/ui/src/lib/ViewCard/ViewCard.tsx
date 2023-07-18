@@ -19,10 +19,10 @@ type Props = {
  * <ViewCard>
  *  <ViewCard.Header>
  *   <h1>Header</h1>
- * </ViewCard.Header>
- * <ViewCard.Body>
- *  <p>Body</p>
- * </ViewCard.Body>
+ *  </ViewCard.Header>
+ *  <ViewCard.Body>
+ *    <p>Body</p>
+ *  </ViewCard.Body>
  * </ViewCard>
  * ```
  */
