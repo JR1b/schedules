@@ -4,6 +4,14 @@ type Props = {
   title: string;
 };
 
+/**
+ * Renders a title bar with a title and menu icon
+ * @param props.title - The title to display in the title bar
+ * @example
+ * ```tsx
+ * <TitleBar title="App" />
+ * ```
+ */
 export function TitleBar(props: Props): React.ReactElement {
   const { title } = props;
   return (

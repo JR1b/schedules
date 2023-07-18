@@ -10,6 +10,22 @@ type Props = {
   className?: string;
 };
 
+/**
+ * Renders a card with a header and body
+ * @param props.children - The content to render in the card
+ * @param props.className - Optional className to apply to the card
+ * @example
+ * ```tsx
+ * <ViewCard>
+ *  <ViewCard.Header>
+ *   <h1>Header</h1>
+ * </ViewCard.Header>
+ * <ViewCard.Body>
+ *  <p>Body</p>
+ * </ViewCard.Body>
+ * </ViewCard>
+ * ```
+ */
 export function ViewCard(props: Props): React.ReactElement {
   const { children, className = '' } = props;
   const listChildren = Array.isArray(children) ? children : [children];

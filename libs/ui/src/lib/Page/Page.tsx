@@ -11,9 +11,7 @@ type Props = {
  * Page component
  *  - Renders a page with a title bar and body
  *
- * @param props.children - The children to render
- * @returns A ReactElement
- *
+ * @param props.children - The child elements to render
  * @example
  * ```tsx
  * <Page title="My Page">
