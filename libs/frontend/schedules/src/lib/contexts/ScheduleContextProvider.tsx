@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 import { useAsyncList } from 'react-stately';
+import { toast } from 'react-toastify';
 
-import { getScheduleList } from '../requests';
+import { getScheduleList, updateSchedule } from '../requests';
 import { Schedule } from '../types';
 import { ScheduleContextState } from './types';
 
@@ -19,9 +20,16 @@ export function ScheduleContextProvider({
   const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
 
   const scheduleListResponse = useAsyncList<Schedule>({
-    load: async ({ signal }) => ({
-      items: await getScheduleList({ options: { signal } }),
-    }),
+    load: async ({ signal }) => {
+      try {
+        const response = await getScheduleList({ options: { signal } });
+        return { items: response };
+      } catch (error) {
+        console.error(error);
+        toast('Failed to load schedules', { type: 'error' });
+        return { items: [] };
+      }
+    },
   });
 
   const {
@@ -30,8 +38,18 @@ export function ScheduleContextProvider({
     update: updateSchedules,
   } = scheduleListResponse;
 
-  const onRetire = (schedule: Schedule, isRetired: boolean): void => {
-    updateSchedules(schedule.id, { ...schedule, isRetired });
+  const onRetire = async (schedule: Schedule, isRetired: boolean): Promise<void> => {
+    const newSchedule = { ...schedule, isRetired };
+    try {
+      // server side update
+      const updatedSchedule = await updateSchedule({ schedule: newSchedule });
+      // client side update
+      updateSchedules(schedule.id, updatedSchedule);
+      toast.success(`Schedule '${updatedSchedule.name}' updated.`);
+    } catch (error) {
+      console.error(error);
+      toast('Failed to update schedule', { type: 'error' });
+    }
   };
 
   const onSelectSchedule = (schedule: Schedule): void => {

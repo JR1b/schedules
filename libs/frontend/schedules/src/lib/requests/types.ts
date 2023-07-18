@@ -1,3 +1,3 @@
 export type FetchOptions = {
-  signal: AbortSignal;
+  signal?: AbortSignal;
 };
