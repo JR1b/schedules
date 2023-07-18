@@ -6,5 +6,5 @@ export type ScheduleContextState = {
   selectedScheduleLogList: Log[];
   isLoadingLogs: boolean;
   onRetire: (schedule: Schedule, isRetired: boolean) => void;
-  onShowLogs: (schedule: Schedule) => void;
+  onSelectSchedule: (schedule: Schedule) => void;
 };

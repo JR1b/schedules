@@ -8,12 +8,7 @@ type Props = {
 export function ViewCardHeader(props: Props): React.ReactElement {
   const { children, className = '' } = props;
   return (
-    <div
-      className={classNames(
-        'flex items-center justify-between p-2 font-medium',
-        className
-      )}
-    >
+    <div className={classNames('flex items-center gap-2 p-2 font-medium', className)}>
       {children}
     </div>
   );

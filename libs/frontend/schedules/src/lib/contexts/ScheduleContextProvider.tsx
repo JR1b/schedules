@@ -46,15 +46,22 @@ export function ScheduleContextProvider({
   });
   const { items: logList, isLoading: isLoadingLogs } = logListResponse;
 
-  const onRetire = async (schedule: Schedule, isRetired: boolean) => {
+  const onRetire = (schedule: Schedule, isRetired: boolean): void => {
     updateSchedules(schedule.id, { ...schedule, isRetired });
   };
 
-  const onShowLogs = (schedule: Schedule) => {
-    const selectedScheduleLogList = logList.filter(
+  const onSelectSchedule = (schedule: Schedule): void => {
+    const isSameSchedule =
+      selectedScheduleLogList.length > 0 &&
+      selectedScheduleLogList[0]?.scheduleId === schedule.id;
+    if (isSameSchedule) {
+      return setSelectedScheduleLogList([]);
+    }
+
+    const newSelectedScheduleLogList = logList.filter(
       (log) => log.scheduleId === schedule.id && logSchema.safeParse(log).success
     );
-    setSelectedScheduleLogList(selectedScheduleLogList);
+    setSelectedScheduleLogList(newSelectedScheduleLogList);
   };
 
   return (
@@ -65,7 +72,7 @@ export function ScheduleContextProvider({
         selectedScheduleLogList,
         isLoadingLogs,
         onRetire,
-        onShowLogs,
+        onSelectSchedule,
       }}
     >
       {children}
