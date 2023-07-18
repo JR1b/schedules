@@ -45,10 +45,6 @@ type UpdateScheduleRequestArgs = {
  */
 export async function updateSchedule(args: UpdateScheduleRequestArgs): Promise<Schedule> {
   const { schedule, options = {} } = args;
-  console.log(
-    '🚀 ~ file: schedule.requests.ts:48 ~ updateSchedule ~ schedule:',
-    schedule
-  );
   const { signal } = options;
 
   const apiURL = process.env['API_URL'];
