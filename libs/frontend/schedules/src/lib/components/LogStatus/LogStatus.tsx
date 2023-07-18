@@ -1,5 +1,3 @@
-'Pending|Running|Terminated|Completed|Exception';
-
 import { match } from 'ts-pattern';
 
 import { Badge } from '@schedules/ui';

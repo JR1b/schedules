@@ -3,7 +3,7 @@ import { ItemProps } from 'react-stately';
 
 import { Log } from '../../types';
 import { formatDate } from '../../utils';
-import { LogStatus } from './LogStatus';
+import { LogStatus } from '../LogStatus';
 
 type Props = {
   log: Log;

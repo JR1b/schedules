@@ -1,4 +1,4 @@
-import { Log, Schedule } from '../types';
+import { Log, LogFilter, Schedule } from '../types';
 
 export type ScheduleContextState = {
   scheduleList: Schedule[];
@@ -10,6 +10,7 @@ export type ScheduleContextState = {
 
 export type LogContextState = {
   logList: Log[];
+  logFilter: LogFilter;
+  updateLogFilter: (filter: LogFilter) => void;
   isLoadingLogs?: boolean;
-  onReload: (schedule: Schedule) => void;
 };

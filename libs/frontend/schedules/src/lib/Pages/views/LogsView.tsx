@@ -1,6 +1,6 @@
 import { Badge, Spinner, ViewCard } from '@schedules/ui';
 
-import { LogList } from '../../components';
+import { LogFilterDialog, LogList } from '../../components';
 import { LogContextProvider, useLogContext, useScheduleContext } from '../../contexts';
 
 function EmptyLogsView(): React.ReactElement {
@@ -18,19 +18,20 @@ function EmptyLogsView(): React.ReactElement {
 
 function SelectedScheduleLogsView(): React.ReactElement {
   const logContext = useLogContext();
-  const { logList, isLoadingLogs } = logContext;
+  const { logList, isLoadingLogs, logFilter, updateLogFilter } = logContext;
 
   return (
     <ViewCard>
-      <ViewCard.Header>
-        <h1 className="text-2xl font-bold">Logs</h1>
-        <Badge>{logList.length}</Badge>
-        <Spinner isLoading={isLoadingLogs} />
+      <ViewCard.Header className="justify-between">
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold">Logs</h1>
+          <Badge>{logList.length}</Badge>
+          <Spinner isLoading={isLoadingLogs} />
+        </div>
+        <LogFilterDialog filter={logFilter} onSubmit={updateLogFilter} />
       </ViewCard.Header>
       <ViewCard.Body>
-        <div>
-          <LogList logList={logList} />
-        </div>
+        <LogList logList={logList} />
       </ViewCard.Body>
     </ViewCard>
   );

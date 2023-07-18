@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useAsyncList } from 'react-stately';
 
 import { getLogList } from '../requests';
 import { logSchema } from '../schemas';
-import { Log, Schedule } from '../types';
+import { Log, LogFilter, Schedule } from '../types';
 import { LogContextState } from './types';
 
 export const LogContext = createContext<LogContextState>({} as LogContextState);
@@ -15,10 +15,14 @@ type LogProviderProps = {
 
 export function LogContextProvider(props: LogProviderProps): React.ReactElement {
   const { schedule, children } = props;
-
+  const [logFilter, setLogFilter] = useState<LogFilter>({ status: [] });
   const logListResponse = useAsyncList<Log>({
     load: async ({ signal }) => ({
-      items: await getLogList({ scheduleId: schedule.id, options: { signal } }),
+      items: await getLogList({
+        scheduleId: schedule.id,
+        filter: logFilter,
+        options: { signal },
+      }),
     }),
   });
 
@@ -30,14 +34,19 @@ export function LogContextProvider(props: LogProviderProps): React.ReactElement 
       return;
     }
     logListResponse.reload();
-  }, [schedule.id]);
+  }, [schedule.id, logFilter]);
+
+  const updateLogFilter = (filter: LogFilter): void => {
+    setLogFilter(filter);
+  };
 
   return (
     <LogContext.Provider
       value={{
         logList: logListData.filter((log) => logSchema.safeParse(log).success),
         isLoadingLogs,
-        onReload: () => null,
+        logFilter,
+        updateLogFilter,
       }}
     >
       {children}
