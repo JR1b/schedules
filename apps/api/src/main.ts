@@ -7,9 +7,15 @@ const port = process.env['API_PORT'] || 3000;
 generateMockData().then((mockData) => {
   const server = jsonServer.create();
   const router = jsonServer.router(mockData);
+
   const middleware = jsonServer.defaults();
 
   server.use(middleware);
+  server.use(
+    jsonServer.rewriter({
+      '/*': '/$1',
+    })
+  );
   server.use(router);
   server.listen(port, () => {
     console.log(`JSON Server is running on port ${port}`);
