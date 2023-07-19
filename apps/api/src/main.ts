@@ -11,6 +11,9 @@ generateMockData().then((mockData) => {
   const middleware = jsonServer.defaults();
 
   server.use(middleware);
+  server.get('/', (req, res) => {
+    res.send('API running 🥳');
+  });
   server.use(
     jsonServer.rewriter({
       '/*': '/$1',
