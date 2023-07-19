@@ -1,4 +1,14 @@
 {
   "singleQuote": true,
-  "printWidth": 90
+  "printWidth": 90,
+  "importOrderSeparation": true,
+  "importOrder": [
+    "jest.*",
+    "reflect-metadata",
+    "react",
+    "<THIRD_PARTY_MODULES>",
+    "^@schedules/(.*)$",
+    "^[./]"
+  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
 }

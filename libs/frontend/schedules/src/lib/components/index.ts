@@ -1,2 +1,3 @@
+export * from './LogList';
 export * from './ScheduleList';
-export * from './Logs';
+export * from './LogFilterDialog';

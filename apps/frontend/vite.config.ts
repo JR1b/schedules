@@ -1,9 +1,16 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+
+import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  build: {
+    emptyOutDir: true,
+    sourcemap: true,
+    cssMinify: true,
+    minify: true,
+  },
   cacheDir: '../../node_modules/.vite/frontend',
 
   server: {
@@ -32,6 +39,9 @@ export default defineConfig({
   //  ],
   // },
 
+  define: {
+    'process.env': process.env,
+  },
   test: {
     globals: true,
     cache: {

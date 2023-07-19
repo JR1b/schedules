@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
-import { defaultTheme, Provider } from '@adobe/react-spectrum';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+import { ToastPortal } from '@schedules/ui';
 
 export function App(): ReactElement {
   return (
-    <Provider theme={defaultTheme} colorScheme={'dark'}>
-      <div className="h-screen">
-        <Outlet />
-      </div>
-    </Provider>
+    <div className="bg-slate-700 text-gray-50">
+      <Outlet />
+      <ToastPortal />
+    </div>
   );
 }
