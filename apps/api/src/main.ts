@@ -11,14 +11,6 @@ generateMockData().then((mockData) => {
   const middleware = jsonServer.defaults();
 
   server.use(middleware);
-  server.get('/', (req, res) => {
-    res.send('API running 🥳');
-  });
-  server.use(
-    jsonServer.rewriter({
-      '/*': '/$1',
-    })
-  );
   server.use(router);
   server.listen(port, () => {
     console.log(`JSON Server is running on port ${port}`);
