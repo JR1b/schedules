@@ -9,8 +9,17 @@ import {
 import './CheckboxGroup.css';
 
 type CheckboxGroupProps = Pick<CheckboxGroupPropsRAC, 'onChange' | 'defaultValue'> & {
+  /**
+   * The content of the checkbox group
+   */
   children?: React.ReactNode;
+  /**
+   * The label of the checkbox group
+   */
   label?: string;
+  /**
+   * The description of the checkbox group
+   */
   description?: string;
 };
 

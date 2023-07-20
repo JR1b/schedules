@@ -3,7 +3,13 @@ import classnames from 'classnames';
 type Variant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
 
 type Props = {
+  /**
+   * The content of the badge
+   */
   children: React.ReactNode;
+  /**
+   * The variant of the badge (default: primary)
+   */
   variant?: Variant;
 };
 
