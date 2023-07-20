@@ -44,6 +44,7 @@ This is a simple application that allows a user to view a list of schedules and 
 
 ## Storybook
 
+[Autodocs](https://storybook.js.org/docs/7.0/react/writing-docs/autodocs) was used to show component descriptions as documentation in storybook.
 
 ### Running storybook
 
@@ -56,3 +57,7 @@ This is a simple application that allows a user to view a list of schedules and 
 * Navigate to `http://localhost:4401`
 
 Note: There was an attempt to create a storybook for all the libraries using [storybook composition](https://nx.dev/packages/storybook/documents/storybook-composition-setup). However, it seems that the storybook composition is not yet stable and not yet working as expected, maybe a miss configuration or some other issue. So only storybook for the ui library is available.
+
+## Usage
+
+Please refer to the [Documentation](docs/use-cases.md).

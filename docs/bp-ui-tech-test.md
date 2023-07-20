@@ -28,7 +28,7 @@ The schedule card component lists its details along with a button to allow it to
 
 The table simply lists the log entries.
 
-![wireframe](./assets/wireframe.jpg)
+![wireframe](../images/wireframe.jpg)
 
 Bonus points will be awarded for options to filter the table and/or cards, semantic HTML, CSS usage, mobile viewport considerations and UI testing. Please don’t be afraid to use new unknown libraries to help you deliver more. We all love to learn new things!
 
